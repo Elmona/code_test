@@ -8,6 +8,7 @@
     "start": "node app.js",
     "dev": "npx nodemon --exec npm start"
   },
+  "type": "module",
   "author": "Emil Larsson",
   "license": "MIT"
 }
