@@ -75,8 +75,6 @@ const convertToClass = lines => {
     const arr = line.split(delimiter)
 
     const [type] = arr
-    console.log(line)
-    // console.log(type)
     switch (type) {
       case 'P':
         const [, firstName, lastName] = arr
