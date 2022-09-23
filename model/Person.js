@@ -1,10 +1,18 @@
 
 const spacing = num => new Array(num).join(' ')
 class Person {
-    relatives = []
+    name = ''
+    born = ''
+    firstname = ''
+    lastname = ''
+    address = []
+    city = ''
+    mobile = ''
+    homenumber = ''
+    family = []
 
     setName(firstname, lastname) {
-        this.firstName = firstname
+        this.firstname = firstname
         this.lastname = lastname
     }
 
@@ -13,18 +21,21 @@ class Person {
         this.homenumber = homenumber
     }
 
-    setAddress(address, city, postalcode) {
-        this.address = address
-        this.city = city
-        this.postalcode = postalcode
+    setAddress(street, city, postalcode) {
+        this.address.push(new Address(street, city, postalcode))
     }
 
     addRelative(name, yearBorn) {
-        this.relatives.push(new Relative(name, yearBorn))
+        this.family.push(new Family(name, yearBorn))
     }
 
     addRelativeNumber(mobile, homenumber) {
-        this.relatives[this.relatives.length - 1].setNumber(mobile, homenumber)
+        this.family[this.family.length - 1].setNumber(mobile, homenumber)
+    }
+
+    addRelativeAddress(street, city, postalcode) {
+        this.family[this.family.length - 1].setAddress(street, city, postalcode)
+    }
 
     convertToString(key, level) {
         if (!this[key]) {
@@ -48,20 +59,26 @@ class Person {
         return str
     }
 }
+class Address extends Person {
+    street = ''
+    city = ''
+    postalcode = ''
 
-class Relative extends Person {
-    constructor(name, yearBorn) {
+    constructor(street, city, postalcode) {
+        super()
+        this.street = street
+        this.city = city
+        this.postalcode = postalcode
+    }
+}
+class Family extends Person {
+    name = ''
+    born = ''
+
+    constructor(name, born) {
         super()
         this.name = name
-        this.yearBorn = yearBorn
-    }
-
-    getXMLPresentation() {
-        return `
-  <family>
-    <firstname>${this.name}</firstname>
-    <born>${this.yearBorn}</born>
-  </family>`.substring(1)
+        this.born = born
     }
 }
 
