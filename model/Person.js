@@ -47,7 +47,7 @@ class Person {
     getXML(type = 'person', level = 2) {
         let str = `${spacing(level)}<${type}>\n`
         for (const [key, value] of Object.entries(this)) {
-            if (key === 'family' || key === 'address') {
+            if (typeof value === 'object') {
                 value.forEach(val => {
                     str += val.getXML(key, level + 2)
                 })
