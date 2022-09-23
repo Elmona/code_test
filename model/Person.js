@@ -25,6 +25,12 @@ class Person {
 
     addRelativeNumber(mobile, homenumber) {
         this.relatives[this.relatives.length - 1].setNumber(mobile, homenumber)
+
+    convertToString(key, level) {
+        if (!this[key]) {
+            return ''
+        }
+        return `${spacing(level)}<${key}>${this[key]}</${key}>\n`
     }
 
     getXML(type = 'person', level = 2) {
