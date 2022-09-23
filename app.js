@@ -43,9 +43,9 @@ T|0702-020202|02-202020
 
 const delimiter = '|'
 const arr = str.split('\n')
-const person = 'P'
 
 const groupInputToSeperatePersons = arr => {
+  const person = 'P'
   const result = []
   let Person = []
 
