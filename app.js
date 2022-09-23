@@ -114,9 +114,7 @@ const res = groupInputToSeperatePersons(arr)
   .map(person => person.getXML())
 
 
-console.log('<people>')
-console.log(res.join(''))
-console.log('</people>')
+console.log(`<people>\n${result.join('')}</people>`)
 
 
 
