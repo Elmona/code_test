@@ -91,8 +91,12 @@ const convertToClass = lines => {
         }
         break
       case 'A':
-        const [, address, city, postalcode] = arr
-        person.setAddress(address, city, postalcode)
+        const [, street, city, postalcode] = arr
+        if (isFamily) {
+          person.addRelativeAddress(street, city, postalcode)
+        } else {
+          person.setAddress(street, city, postalcode)
+        }
         break
       case 'F':
         const [, name, yearBorn] = arr
