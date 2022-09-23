@@ -1,5 +1,5 @@
 
-
+const spacing = num => new Array(num).join(' ')
 class Person {
     relatives = []
 
