@@ -1,8 +1,12 @@
 'use strict'
 
-import {Person} from './model/Person.js'
+import {
+  groupInputToSeperatePersons,
+  convertToClass
+} from './lib/helperFunctions.js'
 
 console.log('CSV To XML converter')
+
 /*
 Filformat input:
 P|förnamn|efternamn
@@ -42,74 +46,7 @@ F|Alma|2016
 T|0702-020202|02-202020
 `
 
-const delimiter = '|'
-const arr = str.split('\n')
-
-const groupInputToSeperatePersons = arr => {
-  const person = 'P'
-  const result = []
-  let Person = []
-
-  arr.forEach(line => {
-    if (line.split(delimiter)[0] === person) {
-      result.push(Person)
-      Person = []
-    }
-
-    Person.push(line)
-  })
-
-  result.push(Person)
-
-  return result
-}
-
-const convertToClass = lines => {
-  if (lines.every(line => line === '')) {
-    // Empty early return
-    return
-  }
-
-  const person = new Person()
-  let isFamily = false
-
-  lines.forEach(line => {
-    const arr = line.split(delimiter)
-
-    const [type] = arr
-    switch (type) {
-      case 'P':
-        const [, firstName, lastName] = arr
-        person.addName(firstName, lastName)
-        break
-      case 'T':
-        const [, mobile, homenumber] = arr
-        if (isFamily) {
-          person.addRelativeNumber(mobile, homenumber)
-        } else {
-          person.addNumber(mobile, homenumber)
-        }
-        break
-      case 'A':
-        const [, street, city, postalcode] = arr
-        if (isFamily) {
-          person.addRelativeAddress(street, city, postalcode)
-        } else {
-          person.addAddress(street, city, postalcode)
-        }
-        break
-      case 'F':
-        const [, name, yearBorn] = arr
-        isFamily = true
-        person.addRelative(name, yearBorn)
-        break
-      default:
-    }
-  })
-  return person
-}
-
-const result = groupInputToSeperatePersons(arr)
+const result = groupInputToSeperatePersons(str.split('\n'))
   .map(person => convertToClass(person))
   .filter(person => typeof person === 'object')
   .map(person => person.getXML())
