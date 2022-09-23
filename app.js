@@ -73,10 +73,6 @@ const convertToClass = lines => {
   let isFamily = false
 
   lines.forEach(line => {
-    if (line.length < 0) {
-      return
-    }
-
     const arr = line.split(delimiter)
 
     const [type] = arr
