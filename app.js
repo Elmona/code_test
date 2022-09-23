@@ -63,13 +63,10 @@ const groupInputToSeperatePersons = arr => {
   return result
 }
 
-
-
-
 const convertToClass = lines => {
   const person = new Person()
+  let isFamily = false
 
-  let isRelative = false
   lines.forEach(line => {
     if (line.length < 0) {
       return
@@ -87,7 +84,7 @@ const convertToClass = lines => {
         break
       case 'T':
         const [, mobile, homenumber] = arr
-        if (isRelative) {
+        if (isFamily) {
           person.addRelativeNumber(mobile, homenumber)
         } else {
           person.setNumber(mobile, homenumber)
@@ -99,7 +96,7 @@ const convertToClass = lines => {
         break
       case 'F':
         const [, name, yearBorn] = arr
-        isRelative = true
+        isFamily = true
         person.addRelative(name, yearBorn)
         break
       default:
