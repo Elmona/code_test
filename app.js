@@ -107,7 +107,7 @@ const convertToClass = lines => {
 
 const res = groupInputToSeperatePersons(arr)
   .map(person => convertToClass(person))
-  .map(person => person.getXMLPresentation())
+  .map(person => person.getXML())
 
 
 console.log('<people>')
