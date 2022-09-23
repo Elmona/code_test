@@ -11,17 +11,17 @@ class Person {
     homenumber = ''
     family = []
 
-    setName(firstname, lastname) {
+    addName(firstname, lastname) {
         this.firstname = firstname
         this.lastname = lastname
     }
 
-    setNumber(mobile, homenumber) {
+    addNumber(mobile, homenumber) {
         this.mobile = mobile
         this.homenumber = homenumber
     }
 
-    setAddress(street, city, postalcode) {
+    addAddress(street, city, postalcode) {
         this.address.push(new Address(street, city, postalcode))
     }
 
@@ -30,14 +30,14 @@ class Person {
     }
 
     addRelativeNumber(mobile, homenumber) {
-        this.family[this.family.length - 1].setNumber(mobile, homenumber)
+        this.family[this.family.length - 1].addNumber(mobile, homenumber)
     }
 
     addRelativeAddress(street, city, postalcode) {
-        this.family[this.family.length - 1].setAddress(street, city, postalcode)
+        this.family[this.family.length - 1].addAddress(street, city, postalcode)
     }
 
-    convertToString(key, level) {
+    _convertToString(key, level) {
         if (!this[key]) {
             return ''
         }
@@ -52,7 +52,7 @@ class Person {
                     str += val.getXML(key, level + 2)
                 })
             } else {
-                str += this.convertToString(key, level + 2)
+                str += this._convertToString(key, level + 2)
             }
         }
         str += `${spacing(level)}</${type}>\n`

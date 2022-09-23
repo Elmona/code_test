@@ -37,6 +37,7 @@ A|White House|Washington, D.C
 P|Emil|Larsson
 A|Adelgatan|Kalmar
 F|Edwin|2014
+A|Adelgatan|Kalmar
 F|Alma|2016
 T|0702-020202|02-202020
 `
@@ -79,14 +80,14 @@ const convertToClass = lines => {
     switch (type) {
       case 'P':
         const [, firstName, lastName] = arr
-        person.setName(firstName, lastName)
+        person.addName(firstName, lastName)
         break
       case 'T':
         const [, mobile, homenumber] = arr
         if (isFamily) {
           person.addRelativeNumber(mobile, homenumber)
         } else {
-          person.setNumber(mobile, homenumber)
+          person.addNumber(mobile, homenumber)
         }
         break
       case 'A':
@@ -94,7 +95,7 @@ const convertToClass = lines => {
         if (isFamily) {
           person.addRelativeAddress(street, city, postalcode)
         } else {
-          person.setAddress(street, city, postalcode)
+          person.addAddress(street, city, postalcode)
         }
         break
       case 'F':
@@ -108,7 +109,7 @@ const convertToClass = lines => {
   return person
 }
 
-const res = groupInputToSeperatePersons(arr)
+const result = groupInputToSeperatePersons(arr)
   .map(person => convertToClass(person))
   .filter(person => typeof person === 'object')
   .map(person => person.getXML())
