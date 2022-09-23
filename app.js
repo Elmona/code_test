@@ -64,6 +64,11 @@ const groupInputToSeperatePersons = arr => {
 }
 
 const convertToClass = lines => {
+  if (lines.every(line => line === '')) {
+    // Empty early return
+    return
+  }
+
   const person = new Person()
   let isFamily = false
 
