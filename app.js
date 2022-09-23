@@ -114,6 +114,7 @@ const convertToClass = lines => {
 
 const res = groupInputToSeperatePersons(arr)
   .map(person => convertToClass(person))
+  .filter(person => typeof person === 'object')
   .map(person => person.getXML())
 
 
