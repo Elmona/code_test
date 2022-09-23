@@ -27,16 +27,19 @@ class Person {
         this.relatives[this.relatives.length - 1].setNumber(mobile, homenumber)
     }
 
-    getXMLPresentation() {
-        if (!this.firstName || !this.lastname) {
-            return
+    getXML(type = 'person', level = 2) {
+        let str = `${spacing(level)}<${type}>\n`
+        for (const [key, value] of Object.entries(this)) {
+            if (key === 'family' || key === 'address') {
+                value.forEach(val => {
+                    str += val.getXML(key, level + 2)
+                })
+            } else {
+                str += this.convertToString(key, level + 2)
+            }
         }
-        return `
-  <person>
-    <firstname>${this.firstName}</firstname>
-    <lastname>${this.lastname}</lastname>
-  ${this.relatives.map(relative => relative.getXMLPresentation()).join('\n')}
-  </person>`.substring(1)
+        str += `${spacing(level)}</${type}>\n`
+        return str
     }
 }
 
