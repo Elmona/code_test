@@ -114,7 +114,7 @@ const res = groupInputToSeperatePersons(arr)
 
 
 console.log('<people>')
-console.log(res.join('\n').substring(1))
+console.log(res.join(''))
 console.log('</people>')
 
 
