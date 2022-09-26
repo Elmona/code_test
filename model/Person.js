@@ -8,7 +8,7 @@ class Person {
     address = []
     city = ''
     mobile = ''
-    homenumber = ''
+    phone = ''
     family = []
 
     addName(firstname, lastname) {
@@ -16,9 +16,9 @@ class Person {
         this.lastname = lastname
     }
 
-    addNumber(mobile, homenumber) {
+    addNumber(mobile, phone) {
         this.mobile = mobile
-        this.homenumber = homenumber
+        this.phone = phone
     }
 
     addAddress(street, city, postalcode) {
