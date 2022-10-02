@@ -7,6 +7,8 @@ This is only for experimental use, it's a code test. Don't use it.
 prerequisites install node
 
 ```
+git clone git@github.com:Elmona/code_test.git
+cd code_test
 npm start
 ```
 
