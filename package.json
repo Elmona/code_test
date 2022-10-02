@@ -1,0 +1,14 @@
+{
+  "name": "csvtoxml",
+  "version": "0.0.1",
+  "description": "Code test don't use it.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "npx nodemon --exec npm start"
+  },
+  "type": "module",
+  "author": "Emil Larsson",
+  "license": "MIT"
+}
