@@ -44,8 +44,5 @@ const result = groupInputToSeperatePersons(str.split('\n'))
   .map(person => person.getXML())
 
 
+console.clear()
 console.log(`<people>\n${result.join('')}</people>`)
-
-
-
-
