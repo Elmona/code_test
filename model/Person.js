@@ -1,6 +1,7 @@
 
 const spacing = num => new Array(num).join(' ')
-class Person {
+
+export class Person {
     name = ''
     born = ''
     firstname = ''
@@ -59,6 +60,7 @@ class Person {
         return str
     }
 }
+
 class Address extends Person {
     street = ''
     city = ''
@@ -71,6 +73,7 @@ class Address extends Person {
         this.postalcode = postalcode
     }
 }
+
 class Family extends Person {
     name = ''
     born = ''
@@ -81,5 +84,3 @@ class Family extends Person {
         this.born = born
     }
 }
-
-export {Person}
