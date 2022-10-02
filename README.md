@@ -1,10 +1,10 @@
 # Code test csv to xml
 
-This is only for experimental use, it's a code test.
+This is only for experimental use, it's a code test. Don't use it.
 
 ## Get started
 
-prerequisites node
+prerequisites install node
 
 ```
 npm start
